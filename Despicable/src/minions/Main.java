@@ -52,15 +52,17 @@ public class Main {
   }
 
   private static void ListarMisiones() {
-    if (mision != null) {
-      for (Mision m : mision) {
+
+    for (Mision m : mision) {
+      if (m != null) {
+
         System.out.println(":::::::: Misiones Registrado ::::::::");
         System.out.println(m);
         System.out.println("----------------------");
       }
-      System.err.println("Error: no hay ninguno mision listado!! ");
-
     }
+
+    System.err.println("Error: no hay ninguno mision listado!! ");
 
   }
 

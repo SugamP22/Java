@@ -62,7 +62,7 @@ public class Villano {
 
   @Override
   public String toString() {
-    return "Villano: \nNombre: " + getNombre() + "\nNivel Maldad: " + getMaldad() + "\nEjercito: "
+    return "\nNombre: " + getNombre() + "\nNivel Maldad: " + getMaldad() + "\nEjercito: "
         + Arrays.toString(getMinions()) + "\nNivel victorias: " + getNivelDeVictorias();
   }
 
