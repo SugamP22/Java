@@ -85,7 +85,7 @@ public class Main {
     private static void modificar(BufferedReader br) {
         try (BufferedReader reader = new BufferedReader(new FileReader(NOMBRE_ARCHIVO))) {
             String lineas;
-            personas.clear();  // Clear the list before loading from the file
+            personas.clear(); // Clear the list before loading from the file
             while ((lineas = reader.readLine()) != null) {
                 personas.add(lineas);
             }
@@ -98,8 +98,8 @@ public class Main {
             String dniPaModificar = br.readLine();
             if (updatingDni(dniPaModificar)) {
                 System.out.println("Introduce los nuevos datos:");
-                cargarDatos(br);  // Add new data after removal
-                actualizarArchivo();  // Update the entire file
+                cargarDatos(br); // Add new data after removal
+                actualizarArchivo(); // Update the entire file
                 leerdatos();
             } else {
                 System.out.println("No coincide con ningun dato!!");
@@ -143,8 +143,7 @@ public class Main {
     private static void contarpersonasRegistrados() {
         try (BufferedReader reader = new BufferedReader(new FileReader(NOMBRE_ARCHIVO))) {
             int contador = 0;
-            String lineas;
-            while ((lineas = reader.readLine()) != null) {
+            while ((reader.readLine()) != null) {
                 contador++;
             }
             System.out.printf("Número total de personas registradas: %d\n", contador);
