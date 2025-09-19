@@ -77,7 +77,7 @@ public class MainTamagochi {
     }
     if (!existe) {
       System.err.println("No hay ninguno tamagochi con esa id que tenga habilidad menor que 20!!");
-      return;
+
     }
 
   }
