@@ -165,7 +165,9 @@ public class ConexionDB {
   public ArrayList<Batalla> listarBatallas() {
     if (conn != null) {
       ArrayList<Batalla> listabatalla = new ArrayList<>();
-      String query = "Select batalla.id,batalla.lugar,batalla.fecha,batalla.id_ganador,batlla.id_perdedor from batalla";
+      // String query = "Select
+      // batalla.id,batalla.lugar,batalla.fecha,batalla.id_ganador,batlla.id_perdedor
+      // from batalla";
 
       return listabatalla;
     }
