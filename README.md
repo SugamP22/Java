@@ -1,2 +1,4 @@
 # Java
-En este repo aprendemos👀 java desde cero0️⃣✌️🧓 al un nivel alto🦾💻😊
+En este repositorio aprenderemos Java desde cero.  
+Avanzaremos paso a paso, adquiriendo habilidades sólidas.  
+El objetivo es alcanzar un nivel avanzado en programación Java.
