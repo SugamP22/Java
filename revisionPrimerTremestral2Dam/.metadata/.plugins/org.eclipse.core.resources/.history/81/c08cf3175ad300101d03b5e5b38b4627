@@ -1,0 +1,19 @@
+package examenPrsp;
+
+public class Supervisor implements new Runnable() {
+	public void run() {
+		
+	}
+}{
+	private String nombre;
+	private final Estacion estacion;
+
+	public Supervisor(Estacion estacion, String nombre) {
+		this.nombre = nombre;
+		this.estacion = estacion;
+
+	}
+	
+	
+
+}

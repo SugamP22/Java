@@ -1,0 +1,27 @@
+package examenPrsp;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Servidor {
+	private ServerSocket server;
+	private Socket cliente;
+
+	public Servidor(ServerSocket server) {
+
+		this.server = server;
+
+	}
+
+	public void iniciar() {
+		try {
+			while (true) {
+				cliente = server.accept();
+
+			}
+		} catch (IOException e) {
+			System.err.println("Error: Tuvo problema en el servirdor");
+		}
+	}
+}

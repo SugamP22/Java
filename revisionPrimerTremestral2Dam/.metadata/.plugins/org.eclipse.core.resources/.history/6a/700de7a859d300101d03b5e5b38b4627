@@ -1,0 +1,74 @@
+package examenPrsp;
+
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Comparator;
+
+public class Estacion {
+
+	private final Set<Roboto> sortedSet = new TreeSet<>(
+			Comparator.comparing(Roboto::getNombre).thenComparing(Roboto::getPrioridad));
+
+	private boolean hanLlegado = false;
+	private boolean cargando = false;
+	private boolean inspeccionando = false;
+
+	public synchronized void rellenar(Roboto roboto) {
+		sortedSet.add(roboto);
+
+		if (sortedSet.size() == 5) {
+			this.hanLlegado = true;
+			notifyAll();
+		}
+	}
+
+	public void cargar(Roboto roboto) {
+		String nombre = roboto.getNombre();
+		synchronized (this) {
+			System.out.println(nombre + " entrando para cargar");
+			while (!hanLlegado || inspeccionando || cargando) {
+				if (!hanLlegado) {
+					System.err.println(nombre + "- En este momento non se puede entrar");
+
+				}
+				if (inspeccionando) {
+					System.err.println(nombre + "- En este momento no puede entrar están inspeccionando");
+
+				}
+				if (cargando) {
+					System.err.println(nombre + "- En este momento no puede entrar porque ahi uno que esta cargando");
+				}
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+		System.out.println(nombre + "Ya esta dentro para cargar");
+		try {
+			Thread.sleep((int) (Math.random() * 200) + 100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(nombre + " esta cargando");
+		try {
+			Thread.sleep((int) (Math.random() * 200) + 100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(nombre + " ya saliendo del estacion");
+		try {
+			Thread.sleep((int) (Math.random() * 200) + 100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cargando = false;
+		notifyAll();
+	}
+}

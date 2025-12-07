@@ -1,0 +1,22 @@
+package examenPrsp;
+
+public class Roboto implements Runnable {
+	private String nombre;
+	private final int prioridad;
+	private Estacion estacion;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Roboto() {
+		prioridad = (int) (Math.random() * 3);
+		this.estacion=estacion;
+	}
+
+	@Override
+	public void run() {
+
+	}
+
+}

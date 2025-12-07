@@ -1,0 +1,10 @@
+package examenPrsp;
+
+public class Estacion {
+
+	public void rellenar(Roboto roboto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

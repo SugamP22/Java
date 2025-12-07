@@ -1,0 +1,26 @@
+package examenPrsp;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+
+public class Estacion {
+	private HashSet<Roboto> listaRobot = new HashSet<>();
+	private boolean hanLlegado = false;
+
+	public synchronized void rellenar(Roboto roboto) {
+		listaRobot.add(roboto);
+		if (listaRobot.size() == 5) {
+			hanLlegado = true;
+			Collections.sort(Comparator.comparingInt(Roboto::getPrioridad));
+			notifyAll();
+		}
+	}
+
+	public void cargar(Roboto roboto) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

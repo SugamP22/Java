@@ -1,0 +1,27 @@
+package examenPrsp;
+
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class Supervisor implements Runnable {
+	private String nombre;
+	private final Estacion estacion;
+	private final Socket socket;
+	private final PrintWriter out;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Supervisor(Estacion estacion, String nombre) {
+		this.nombre = nombre;
+		this.estacion = estacion;
+
+	}
+
+	@Override
+	public void run() {
+		estacion.inspecionar(this);
+	}
+
+}

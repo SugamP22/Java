@@ -1,0 +1,7 @@
+package examenPrsp;
+
+public class PuntoDeEntrada {
+	public static void main(String[] args) {
+		Estacion estacion = new Estacion();
+	}
+}

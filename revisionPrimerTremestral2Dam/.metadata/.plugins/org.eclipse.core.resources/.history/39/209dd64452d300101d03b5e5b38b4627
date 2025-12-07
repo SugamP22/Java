@@ -1,0 +1,29 @@
+package examenPrsp;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Estacion {
+	Set<Roboto> sortedSet = new TreeSet()<Roboto>(
+	        Comparator.comparingInt(Roboto::getPrioridad)
+	);
+	private boolean hanLlegado = false;
+
+	public synchronized void rellenar(Roboto roboto) {
+		listaRobot.add(roboto);
+		if (listaRobot.size() == 5) {
+			hanLlegado = true;
+			notifyAll();
+		}
+	}
+
+	public void cargar(Roboto roboto) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

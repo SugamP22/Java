@@ -1,0 +1,26 @@
+package examenPrsp;
+
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Comparator;
+
+public class Estacion {
+
+	private final Set<Roboto> sortedSet = new TreeSet<>(
+			Comparator.comparing(Roboto::getNombre).thenComparing(Roboto::getPrioridad));
+
+	private boolean hanLlegado = false;
+
+	public synchronized void rellenar(Roboto roboto) {
+		sortedSet.add(roboto);
+
+		if (sortedSet.size() == 5) {
+			this.hanLlegado = true;
+			notifyAll();
+		}
+	}
+
+	public void cargar(Roboto roboto) {
+		while()
+	}
+}

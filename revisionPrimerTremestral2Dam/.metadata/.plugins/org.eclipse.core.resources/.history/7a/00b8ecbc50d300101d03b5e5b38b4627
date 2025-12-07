@@ -1,0 +1,11 @@
+package examenPrsp;
+
+public class Roboto {
+	private String nombre;
+	private int prioridad;
+
+public Roboto() {
+prioridad=(int)(Math.random()*3)	// TODO Auto-generated constructor stub;
+}
+
+}

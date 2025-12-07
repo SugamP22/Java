@@ -1,0 +1,19 @@
+package examenPrsp;
+
+import java.util.HashSet;
+
+public class Estacion {
+	private HashSet<Roboto> listaRobot = new HashSet<>();
+	private boolean hanLlegado = false;
+
+	public synchronized void rellenar(Roboto roboto) {
+		listaRobot.add(roboto);
+		if(roboto)
+	}
+
+	public void cargar(Roboto roboto) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

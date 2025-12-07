@@ -1,0 +1,15 @@
+package examenPrsp;
+
+public class Roboto implements Runnable {
+	private String nombre;
+	private final int prioridad;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Roboto() {
+		prioridad = (int) (Math.random() * 3);
+	}
+
+}
