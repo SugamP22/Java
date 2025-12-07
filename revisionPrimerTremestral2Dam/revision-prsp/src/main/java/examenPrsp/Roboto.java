@@ -6,6 +6,7 @@ public class Roboto implements Runnable {
 	private String nombre;
 	private final int prioridad;
 	private Estacion estacion;
+	private int ronda = 0;
 
 	public int getPrioridad() {
 		return prioridad;
@@ -16,7 +17,7 @@ public class Roboto implements Runnable {
 	}
 
 	public Roboto(Estacion estacion, String string) {
-		prioridad = (int) (Math.random() * 3);
+		prioridad = (int) (Math.random() * 4);
 		this.estacion = estacion;
 		this.nombre = string;
 	}
@@ -44,6 +45,14 @@ public class Roboto implements Runnable {
 		for (int i = 0; i < 5; i++) {
 			estacion.cargar(this);
 		}
+	}
+
+	public void aniadirRonda() {
+		ronda++;
+	}
+
+	public int getRonda() {
+		return ronda;
 	}
 
 }

@@ -7,7 +7,7 @@ import java.util.Comparator;
 public class Estacion {
 
 	private final Set<Roboto> sortedSet = new TreeSet<>(
-			Comparator.comparing(Roboto::getNombre).thenComparing(Roboto::getPrioridad));
+			Comparator.comparing(Roboto::getPrioridad).thenComparing(Roboto::getNombre));
 
 	private boolean hanLlegado = false;
 	private boolean cargando = false;
@@ -26,7 +26,7 @@ public class Estacion {
 		String nombre = roboto.getNombre();
 		synchronized (this) {
 			System.out.println(nombre + " entrando para cargar");
-			while (!hanLlegado || inspeccionando || cargando) {
+			while (!hanLlegado || inspeccionando || cargando || !suTurno(roboto.getNombre())) {
 				if (!hanLlegado) {
 					System.err.println(nombre + "- En este momento non se puede entrar");
 
@@ -38,6 +38,10 @@ public class Estacion {
 				if (cargando) {
 					System.err.println(nombre + "- En este momento no puede entrar porque ahi uno que esta cargando");
 				}
+				if (!suTurno(roboto.getNombre())) {
+					System.err
+							.println(nombre + "- En este momento no puede entrar porque ahi otros con mayor prioridad");
+				}
 				try {
 					wait();
 				} catch (InterruptedException e) {
@@ -48,7 +52,7 @@ public class Estacion {
 
 			cargando = true;
 		}
-		System.out.println(nombre + "Ya esta dentro para cargar");
+		System.out.println(nombre + "Ya esta dentro para cargar Prioridad: " + roboto.getPrioridad());
 		try {
 			Thread.sleep((int) (Math.random() * 200) + 100);
 		} catch (InterruptedException e) {
@@ -70,9 +74,18 @@ public class Estacion {
 			e.printStackTrace();
 		}
 		synchronized (this) {
+			roboto.aniadirRonda();
+			if (roboto.getRonda() >= 5) {
+				sortedSet.remove(roboto);
+			}
 			cargando = false;
 			notifyAll();
 		}
+
+	}
+
+	private synchronized boolean suTurno(String nombre) {
+		return sortedSet.iterator().next().getNombre().equalsIgnoreCase(nombre);
 	}
 
 	public void inspecionar(Supervisor supervisor) {
